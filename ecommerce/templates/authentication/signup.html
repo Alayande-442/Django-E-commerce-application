@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block body %}
+
+<br><br><br><br><br><br><br><br><br><br>
+<div class="card bg-dark p-5 pt-4 text-light mb-5">
+
+  {% for message in messages%}
+      <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong></strong>{{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+
+  <h3 class="text-white">Sign Up</h3>
+  <form action="/auth/signup/" method="post">
+    {% csrf_token %}
+    
+    <label for="email">Email</label>
+    <br>
+    <div class="form-group">
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+  
+    <label for="pass1">Password</label>
+    <br>
+    <div class="form-group">
+      <input type="password" class="form-control" id="pass1" name="pass1" required>
+    </div>
+  
+    <label for="pass2">Confirm Password</label>
+     <br>
+    <div class="form-group">
+      <input type="password" class="form-control" id="pass2" name="pass2" required>
+    </div>
+  
+    <br>
+    <button type="submit" class="btn btn-light">Sign In</button>
+    <br><br>
+    Already User? <a href="{% url 'login-page' %}">Login</a>
+  </form>
+</div>
+
+<br><br><br><br><br>
+{% endblock body %}
+
+{% block footer%}
+
+{% endblock %}
